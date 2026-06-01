@@ -862,8 +862,7 @@
                   <span>Cho thuê tốt</span><b>30.000.000đ/tháng × 36 tháng</b>
                 </div>
                 <div class="assumptionItem">
-                  <span>Thuê trung bình theo PDF</span
-                  ><b>960.000.000đ / 3 năm</b>
+                  <span>Thuê trung bình</span><b>960.000.000đ / 3 năm</b>
                 </div>
                 <div class="assumptionItem">
                   <span>Chu kỳ phân tích</span><b>5 năm</b>
@@ -965,7 +964,7 @@
             </div>
           </div>
           <div class="card tableCard">
-            <h4>Bài toán tài chính theo PDF</h4>
+            <h4>Bài toán tài chính</h4>
             <p>
               Bảng này tính lợi nhuận ròng sau khi trừ lãi vay 2 năm và ROI trên
               vốn tự có, đúng theo cách trình bày trong file PDF.
@@ -1009,7 +1008,7 @@
             </div>
           </div>
           <div class="card tableCard">
-            <h4>Đánh giá tổng thể theo PDF</h4>
+            <h4>Đánh giá tổng thể</h4>
             <div class="checklistGrid">
               <div class="checklistBox">
                 <h5>Nên mua khi</h5>
@@ -1064,8 +1063,8 @@
                 >LN kép A+B = Lợi nhuận so với gốc + Lợi nhuận cho thuê 3
                 năm</code
               ><br /><code
-                >Theo PDF: LN ròng = Lãi tăng giá + Thuê 3 năm - Lãi vay 2 năm;
-                ROI = LN ròng / Vốn tự có</code
+                >LN ròng = Lãi tăng giá + Thuê 3 năm - Lãi vay 2 năm; ROI = LN
+                ròng / Vốn tự có</code
               >
             </div>
           </div>
@@ -1545,7 +1544,7 @@
             title: "Thị trường đi ngang",
             assumption: `Giá bán sau 5 năm khoảng ${money(sidewaysSale)}; thuê 3 năm ${money(EXCEL.rentBasicMonthly * EXCEL.rentMonths)}; trừ lãi vay ${money(interest)}.`,
             impact: sidewaysNet,
-            note: "Theo PDF: lợi nhuận thực có thể rất thấp nếu tăng giá không đạt kỳ vọng.",
+            note: "Lợi nhuận thực có thể rất thấp nếu tăng giá không đạt kỳ vọng.",
           },
           {
             title: "Áp lực sau hỗ trợ lãi suất",
@@ -2276,7 +2275,7 @@
               [80, 125, 95, 110, "*"],
             ),
             {
-              text: "Bài toán tài chính theo PDF",
+              text: "Bài toán tài chính",
               style: "subTitle",
               pageBreak: "before",
             },
@@ -2300,7 +2299,7 @@
               pdfInvestorBody,
               [90, 110, 170, "*"],
             ),
-            { text: "Đánh giá tổng thể theo PDF", style: "subTitle" },
+            { text: "Đánh giá tổng thể", style: "subTitle" },
             makeTable(
               ["Nhóm", "Điều kiện"],
               [...shouldBuyBody, ...shouldNotBuyBody],
@@ -2347,7 +2346,7 @@
                   c("Lợi nhuận cho thuê 3 năm + LN / Giá bán"),
                 ],
                 [
-                  c("Theo PDF", { bold: true }),
+                  c("Lưu ý", { bold: true }),
                   c(
                     "LN ròng = Lãi tăng giá + Thuê 3 năm - Lãi vay 2 năm; ROI = LN ròng / Vốn tự có",
                   ),
