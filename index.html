@@ -1,0 +1,2451 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BTCLAND VIETNAM | Bài toán tài chính Vinhomes Saigon Park</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.10/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.10/vfs_fonts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <style>
+      :root {
+        --bg: #f5f8f5;
+        --card: #ffffff;
+        --ink: #143126;
+        --muted: #61736a;
+        --line: #dce9e2;
+        --green: #0e6b42;
+        --green2: #0a4d31;
+        --gold: #d7b46a;
+        --soft: #eef7f1;
+        --red: #e11d48;
+        --shadow: 0 18px 52px rgba(20, 60, 40, 0.1);
+        --radius: 22px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+        color: var(--ink);
+        background: linear-gradient(180deg, #fff 0%, var(--bg) 48%, #fff 100%);
+        line-height: 1.55;
+        font-weight: 400;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .container {
+        width: min(1420px, calc(100% - 30px));
+        margin: 0 auto;
+      }
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        background: rgba(255, 255, 255, 0.94);
+        border-bottom: 1px solid var(--line);
+        backdrop-filter: blur(14px);
+      }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 18px;
+        padding: 13px 0;
+      }
+      .brand {
+        display: flex;
+        gap: 13px;
+        align-items: center;
+      }
+      .logo {
+        width: 56px;
+        height: 56px;
+        border-radius: 17px;
+        background: linear-gradient(135deg, var(--green), var(--green2));
+        color: #fff;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        font-weight: 800;
+        font-size: 12px;
+        line-height: 1.05;
+        letter-spacing: 0.05em;
+        box-shadow: 0 10px 24px rgba(10, 77, 49, 0.22);
+      }
+      .brand h1 {
+        margin: 0;
+        font-size: 18px;
+        letter-spacing: 0.02em;
+        font-weight: 700;
+      }
+      .brand p {
+        margin: 3px 0 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .pills {
+        display: flex;
+        gap: 9px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+      .pill {
+        border: 1px solid var(--line);
+        background: #fff;
+        border-radius: 999px;
+        padding: 8px 12px;
+        color: var(--muted);
+        font-size: 13px;
+        white-space: nowrap;
+      }
+      .hero {
+        padding: 32px 0 18px;
+      }
+      .heroGrid {
+        display: grid;
+        grid-template-columns: 1.06fr 0.94fr;
+        gap: 22px;
+        align-items: stretch;
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+      .heroText {
+        padding: 30px;
+        position: relative;
+      }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: var(--soft);
+        color: var(--green2);
+        font-weight: 600;
+        font-size: 13px;
+        margin-bottom: 14px;
+      }
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--green);
+      }
+      h2 {
+        font-size: clamp(32px, 4.8vw, 56px);
+        line-height: 1.02;
+        letter-spacing: -0.04em;
+        margin: 0;
+      }
+      .lead {
+        margin: 17px 0 0;
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.72;
+        font-weight: 400;
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 11px;
+        margin-top: 22px;
+      }
+      .btn {
+        border: 0;
+        border-radius: 15px;
+        padding: 13px 17px;
+        font-weight: 700;
+        font-size: 14px;
+        cursor: pointer;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        transition: 0.16s;
+      }
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+      .btn:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+        transform: none;
+      }
+      .primary {
+        background: linear-gradient(135deg, var(--green), var(--green2));
+        color: #fff;
+        box-shadow: 0 16px 30px rgba(14, 107, 66, 0.23);
+      }
+      .ghost {
+        background: #fff;
+        color: var(--ink);
+        border: 1px solid var(--line);
+      }
+      .heroPanel {
+        padding: 28px;
+        color: #fff;
+        min-height: 380px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background:
+          radial-gradient(
+            circle at 20% 0,
+            rgba(215, 180, 106, 0.25),
+            transparent 18rem
+          ),
+          linear-gradient(145deg, #06291c, #0b7f5f 55%, #113626);
+      }
+      .heroPanel h3 {
+        margin: 0;
+        font-size: 32px;
+        line-height: 1.12;
+        font-weight: 700;
+      }
+      .heroPanel p {
+        color: rgba(255, 255, 255, 0.82);
+      }
+      .heroStats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      .heroStats div {
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 16px;
+        padding: 13px;
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .heroStats b {
+        display: block;
+        color: #f6d78e;
+        font-size: 22px;
+        font-weight: 700;
+      }
+      .heroStats span {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.82);
+      }
+      .sectionTitle {
+        margin: 28px 0 15px;
+      }
+      .sectionTitle h3 {
+        margin: 0;
+        font-size: 28px;
+        letter-spacing: -0.02em;
+        font-weight: 700;
+      }
+      .sectionTitle p {
+        margin: 7px 0 0;
+        color: var(--muted);
+        font-weight: 400;
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: 520px minmax(0, 1fr);
+        gap: 24px;
+        align-items: start;
+      }
+      .inputPanel {
+        position: sticky;
+        top: 92px;
+      }
+      .panelPad {
+        padding: 20px;
+      }
+      .field {
+        margin-bottom: 14px;
+      }
+      .field label {
+        display: block;
+        font-weight: 700;
+        margin: 0 0 8px;
+        font-size: 14px;
+      }
+      .field input,
+      .field select {
+        width: 100%;
+        min-width: 0;
+        height: 60px;
+        border: 1px solid #c8d9cd;
+        border-radius: 16px;
+        background: #fbfffc;
+        color: var(--ink);
+        font:
+          600 16px "Segoe UI",
+          Arial,
+          sans-serif;
+        padding: 0 18px;
+        outline: none;
+      }
+      .field select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        padding-right: 54px;
+        background-color: #fbfffc;
+        background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 9L12 15L18 9' stroke='%23083f2b' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 22px center;
+        background-size: 18px 18px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .field input::placeholder {
+        color: #9bb0a3;
+        font-weight: 500;
+      }
+      .field input:focus,
+      .field select:focus {
+        border-color: var(--green);
+        box-shadow: 0 0 0 4px rgba(14, 107, 66, 0.1);
+      }
+      .hint {
+        color: var(--muted);
+        font-size: 13px;
+        margin: 6px 0 0;
+        font-weight: 400;
+      }
+      .error {
+        display: none;
+        color: #b42318;
+        font-weight: 700;
+        font-size: 13px;
+        margin-top: 8px;
+      }
+      .twoCols {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 14px;
+      }
+      .pdfGreetingFields {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 14px;
+        margin-bottom: 16px;
+        background: linear-gradient(180deg, #fff, #f7fcf9);
+      }
+      .pdfGreetingFields h4 {
+        margin: 0 0 6px;
+        color: var(--green2);
+        font-size: 16px;
+        line-height: 1.3;
+        font-weight: 700;
+      }
+      .pdfGreetingFields p {
+        margin: 0 0 12px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.55;
+        font-weight: 400;
+      }
+      .miniGrid,
+      .kpis {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-top: 14px;
+      }
+      .mini,
+      .kpi {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 12px;
+        background: #fbfefc;
+      }
+      .mini span,
+      .kpi span {
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 5px;
+      }
+      .mini b,
+      .kpi b {
+        font-size: 16px;
+        font-weight: 700;
+      }
+      .kpis {
+        grid-template-columns: repeat(4, 1fr);
+        margin-top: 0;
+      }
+      .results {
+        display: grid;
+        gap: 18px;
+      }
+      .tableCard {
+        padding: 18px;
+      }
+      .tableCard h4 {
+        margin: 0 0 5px;
+        font-size: 19px;
+        font-weight: 700;
+      }
+      .tableCard p {
+        margin: 0 0 12px;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 400;
+      }
+      .tableWrap {
+        overflow: auto;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fff;
+        min-width: 860px;
+      }
+      th,
+      td {
+        border-bottom: 1px solid var(--line);
+        padding: 10px 11px;
+        font-size: 13px;
+        vertical-align: top;
+        text-align: left;
+        font-weight: 400;
+      }
+      th {
+        background: #eff7f2;
+        color: #244332;
+        font-weight: 700;
+        line-height: 1.35;
+      }
+      td.money,
+      th.money {
+        text-align: right;
+        white-space: nowrap;
+      }
+      .good {
+        font-weight: 700;
+        color: var(--green2);
+      }
+      .danger {
+        font-weight: 700;
+        color: #b42318;
+      }
+      .formula {
+        background: #0d2418;
+        color: #e8f6ed;
+        border-radius: 18px;
+        padding: 16px;
+        font-size: 13px;
+        line-height: 1.7;
+      }
+      .formula code {
+        color: #d8f3dc;
+        font-weight: 600;
+      }
+      .riskGrid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+      .riskItem {
+        border: 1px solid var(--line);
+        background: #fbfffc;
+        border-radius: 14px;
+        padding: 12px;
+        font-size: 13px;
+      }
+      .riskItem b {
+        color: var(--green2);
+      }
+      .assumptionBox {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 14px;
+        margin: 14px 0;
+        background: linear-gradient(180deg, #ffffff, #f7fcf9);
+      }
+      .assumptionBox h4 {
+        margin: 0 0 6px;
+        color: var(--green2);
+        font-size: 16px;
+        line-height: 1.3;
+        font-weight: 700;
+      }
+      .assumptionBox p {
+        margin: 0 0 12px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.55;
+      }
+      .assumptionGrid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+      .assumptionItem {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 10px 12px;
+        background: #fbfffc;
+      }
+      .assumptionItem span {
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 4px;
+      }
+      .assumptionItem b {
+        font-size: 15px;
+        font-weight: 700;
+      }
+      .checklistGrid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+      .checklistBox {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 14px;
+        background: #fbfffc;
+      }
+      .checklistBox h5 {
+        margin: 0 0 8px;
+        font-size: 15px;
+        color: var(--green2);
+      }
+      .checklistBox ul {
+        margin: 0;
+        padding-left: 19px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.65;
+      }
+      .modalOverlay {
+        position: fixed;
+        inset: 0;
+        z-index: 999;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 18px;
+        background: rgba(8, 20, 13, 0.58);
+        backdrop-filter: blur(8px);
+      }
+      .modalOverlay.show {
+        display: flex;
+      }
+      .modalCard {
+        width: min(520px, 100%);
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        box-shadow: 0 28px 90px rgba(0, 0, 0, 0.22);
+        overflow: hidden;
+      }
+      .modalHead {
+        padding: 22px 22px 12px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 14px;
+      }
+      .modalHead h3 {
+        margin: 0;
+        font-size: 24px;
+        line-height: 1.2;
+        color: var(--green2);
+        letter-spacing: -0.02em;
+        font-weight: 700;
+      }
+      .modalHead p {
+        margin: 8px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 400;
+      }
+      .modalClose {
+        width: 38px;
+        height: 38px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: #fff;
+        color: var(--ink);
+        font-size: 22px;
+        line-height: 1;
+        cursor: pointer;
+      }
+      .modalBody {
+        padding: 0 22px 22px;
+      }
+      .modalForm {
+        display: grid;
+        gap: 13px;
+      }
+      .modalForm label {
+        display: block;
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 7px;
+      }
+      .modalForm input {
+        width: 100%;
+        height: 52px;
+        border: 1px solid #c8d9cd;
+        border-radius: 15px;
+        background: #fbfffc;
+        color: var(--ink);
+        font:
+          600 16px "Segoe UI",
+          Arial,
+          sans-serif;
+        padding: 0 14px;
+        outline: none;
+      }
+      .modalError {
+        display: none;
+        color: #b42318;
+        background: #fff4f2;
+        border: 1px solid #ffd6d0;
+        border-radius: 14px;
+        padding: 10px 12px;
+        font-size: 13px;
+        font-weight: 700;
+      }
+      .modalNote {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.55;
+        margin: 2px 0 0;
+        font-weight: 400;
+      }
+      .modalActions {
+        display: grid;
+        gap: 10px;
+        margin-top: 6px;
+      }
+      .modalActions .btn {
+        width: 100%;
+      }
+      footer {
+        margin-top: 36px;
+        background: #08140d;
+        color: #dceee4;
+        padding: 30px 0;
+      }
+      .footerGrid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 18px;
+      }
+      footer p {
+        color: #a7c1b2;
+        margin: 8px 0 0;
+      }
+      .footerContact {
+        display: grid;
+        gap: 7px;
+      }
+      @media (max-width: 1180px) {
+        .heroGrid,
+        .layout,
+        .footerGrid {
+          grid-template-columns: 1fr;
+        }
+        .inputPanel {
+          position: relative;
+          top: auto;
+        }
+        .pills {
+          display: none;
+        }
+        .kpis {
+          grid-template-columns: 1fr 1fr;
+        }
+        .heroPanel {
+          min-height: 320px;
+        }
+      }
+      @media (max-width: 680px) {
+        .container {
+          width: calc(100% - 20px);
+        }
+        .heroText,
+        .panelPad,
+        .tableCard {
+          padding: 16px;
+        }
+        .miniGrid,
+        .kpis,
+        .twoCols,
+        .riskGrid,
+        .assumptionGrid,
+        .checklistGrid {
+          grid-template-columns: 1fr;
+        }
+        table {
+          min-width: 760px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container nav">
+        <div class="brand">
+          <div class="logo">BTC<br />LAND</div>
+          <div>
+            <h1>BTCLAND VIETNAM</h1>
+            <p>Bài toán tài chính Vinhomes Saigon Park</p>
+          </div>
+        </div>
+        <div class="pills">
+          <span class="pill">Hotline: 0356.99.01.99</span
+          ><span class="pill">Email: btclandvn1@gmail.com</span
+          ><span class="pill">Số 37, Đường 37, KĐT Vạn Phúc</span>
+        </div>
+      </div>
+    </header>
+    <section class="hero">
+      <div class="container heroGrid">
+        <div class="card heroText">
+          <div class="eyebrow">
+            <span class="dot"></span> Vinhomes Saigon Park · Bài toán tài chính
+          </div>
+          <h2>
+            Công cụ giả định tăng giá & lợi nhuận kép Vinhomes Saigon Park
+          </h2>
+          <p class="lead">
+            Nhập diện tích, đơn giá, phương án sản phẩm và các giả định vay -
+            cho thuê. Hệ thống tự tính vốn tự có, ngân hàng, lãi vay, tăng giá
+            sau 5 năm, lợi nhuận kép và ROI.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="#calculator">Tạo bài toán tài chính</a
+            ><button class="btn ghost" id="topPdfBtn" disabled>Xuất PDF</button>
+          </div>
+        </div>
+        <div class="card heroPanel">
+          <div>
+            <div
+              class="eyebrow"
+              style="background: rgba(255, 255, 255, 0.12); color: #fff"
+            >
+              <span class="dot" style="background: #f6d78e"></span> PHÂN TÍCH
+              RỦI RO
+            </div>
+            <h3>Gắn bài toán đòn bẩy 30/70 với kịch bản tăng giá 5 năm</h3>
+            <p>
+              Tái hiện mô hình căn 50m² giá 6 tỷ, vốn tự có 30%, vay 70%, lãi
+              10% trong 2 năm và khai thác cho thuê 3 năm.
+            </p>
+          </div>
+          <div class="heroStats">
+            <div><b>30/70</b><span>Vốn tự có / ngân hàng</span></div>
+            <div><b>5 năm</b><span>Chu kỳ tăng giá giả định</span></div>
+            <div><b>20-30tr</b><span>Cho thuê mỗi tháng</span></div>
+            <div>
+              <b>6 rủi ro</b><span>Tăng giá, thanh khoản, dòng tiền...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <main class="container" id="calculator">
+      <div class="sectionTitle">
+        <h3>Công cụ tính lợi nhuận kép</h3>
+        <p>
+          Thông tin trong ô nhập là placeholder. Bạn có thể thay đổi giá, tỷ lệ
+          vay, tiền thuê và lãi suất để mô phỏng nhiều tình huống tư vấn khác
+          nhau.
+        </p>
+      </div>
+      <div class="layout">
+        <aside class="card inputPanel">
+          <div class="panelPad">
+            <div class="pdfGreetingFields">
+              <h4>Thông tin lời chào trên PDF</h4>
+              <p>
+                Nội dung này sẽ xuất hiện ở phần đầu báo cáo gửi cho khách hàng.
+              </p>
+              <div class="field">
+                <label for="customerDisplayName">Tên khách hàng</label
+                ><input
+                  id="customerDisplayName"
+                  placeholder="Nhập tên khách hàng"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="field">
+                <label for="staffDisplayName">Tên nhân viên tư vấn</label
+                ><input
+                  id="staffDisplayName"
+                  placeholder="Nhập tên nhân viên tư vấn"
+                  autocomplete="off"
+                />
+              </div>
+            </div>
+            <div class="field">
+              <label for="unitType">Loại căn</label
+              ><input
+                id="unitType"
+                placeholder="Ví dụ: Liền kề"
+                autocomplete="off"
+              />
+            </div>
+            <div class="twoCols">
+              <div class="field">
+                <label for="areaInput">Diện tích</label
+                ><input
+                  id="areaInput"
+                  inputmode="decimal"
+                  placeholder="Ví dụ: 50"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="field">
+                <label for="unitPriceInput">Đơn giá</label
+                ><input
+                  id="unitPriceInput"
+                  inputmode="numeric"
+                  placeholder="Ví dụ: 120.000.000"
+                  autocomplete="off"
+                />
+              </div>
+            </div>
+            <div class="field">
+              <label for="productLine">Dòng sản phẩm</label
+              ><select id="productLine">
+                <option value="gianxay">Giãn xây</option>
+                <option value="xaytho">Xây thô</option>
+                <option value="hoanthien">Hoàn thiện</option>
+              </select>
+              <div class="hint">
+                Theo Excel: giãn xây = 100% giá nhập; xây thô = 90%; hoàn thiện
+                = 120%.
+              </div>
+            </div>
+            <div class="assumptionBox">
+              <h4>Giả định cố định theo Excel/PDF</h4>
+              <p>
+                Các tỷ lệ vay, lãi vay và dòng tiền thuê được khóa theo file gốc
+                để tránh lệch công thức. Người dùng chỉ cần nhập diện tích và
+                đơn giá.
+              </p>
+              <div class="assumptionGrid">
+                <div class="assumptionItem">
+                  <span>Vốn tự có</span><b>30%</b>
+                </div>
+                <div class="assumptionItem">
+                  <span>Ngân hàng</span><b>70%</b>
+                </div>
+                <div class="assumptionItem">
+                  <span>Lãi vay</span><b>10%/năm × 2 năm</b>
+                </div>
+                <div class="assumptionItem">
+                  <span>Trả lãi</span><b>24 tháng</b>
+                </div>
+                <div class="assumptionItem">
+                  <span>Cho thuê cơ bản</span
+                  ><b>20.000.000đ/tháng × 36 tháng</b>
+                </div>
+                <div class="assumptionItem">
+                  <span>Cho thuê tốt</span><b>30.000.000đ/tháng × 36 tháng</b>
+                </div>
+                <div class="assumptionItem">
+                  <span>Thuê trung bình theo PDF</span
+                  ><b>960.000.000đ / 3 năm</b>
+                </div>
+                <div class="assumptionItem">
+                  <span>Chu kỳ phân tích</span><b>5 năm</b>
+                </div>
+              </div>
+            </div>
+            <div id="inputError" class="error">
+              Vui lòng nhập diện tích và đơn giá hợp lệ.
+            </div>
+            <div class="miniGrid">
+              <div class="mini">
+                <span>Tổng giá đầu vào</span><b id="miniRaw">—</b>
+              </div>
+              <div class="mini">
+                <span>Vốn tự có</span><b id="miniEquity">—</b>
+              </div>
+            </div>
+            <div class="actions">
+              <button class="btn primary" id="pdfBtn" disabled>Xuất PDF</button
+              ><button class="btn ghost" id="resetBtn">Xóa dữ liệu nhập</button>
+            </div>
+          </div>
+        </aside>
+        <section class="results">
+          <div class="kpis">
+            <div class="kpi">
+              <span>Giá chuẩn</span><b id="kpiStandard">—</b>
+            </div>
+            <div class="kpi">
+              <span>Ngân hàng 70%</span><b id="kpiLoan">—</b>
+            </div>
+            <div class="kpi">
+              <span>Lãi vay 2 năm</span><b id="kpiInterest">—</b>
+            </div>
+            <div class="kpi">
+              <span>LN kép cơ bản</span><b id="kpiRoi">—</b>
+            </div>
+          </div>
+          <div class="card tableCard">
+            <h4>Bảng giá, vốn tự có và lãi vay</h4>
+            <p>
+              Phần này tái hiện bảng chính trong Excel: giá chuẩn, VTC 30%, bank
+              70%, lãi vay 10% trong 2 năm, trả lãi mỗi tháng và giá thanh toán
+              sớm.
+            </p>
+            <div class="tableWrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Dòng sản phẩm</th>
+                    <th class="money">Giá chuẩn</th>
+                    <th class="money">VTC</th>
+                    <th class="money">Bank</th>
+                    <th class="money">Lãi vay</th>
+                    <th class="money">Lãi/tháng</th>
+                    <th class="money">Giá TTS</th>
+                  </tr>
+                </thead>
+                <tbody id="policyBody"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card tableCard">
+            <h4>Bảng giả định tăng giá</h4>
+            <p>
+              Tính đúng theo bảng Excel: tài sản sau 5 năm = Tổng giá × hệ số
+              tăng giá; lợi nhuận so với gốc = tài sản sau 5 năm - giá chuẩn
+              giãn xây.
+            </p>
+            <div class="tableWrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Kịch bản</th>
+                    <th>Mức tăng trưởng</th>
+                    <th>Sau 5 năm</th>
+                    <th>MIN</th>
+                    <th>MAX</th>
+                    <th class="money">LN MIN</th>
+                    <th class="money">LN MAX</th>
+                    <th class="money">LN MIN so với gốc</th>
+                    <th class="money">LN MAX so với gốc</th>
+                  </tr>
+                </thead>
+                <tbody id="scenarioBody"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card tableCard">
+            <h4>Phương án MIN/MAX theo file Excel</h4>
+            <p id="investorSummary">
+              Tính đúng theo hai bảng: “PHƯƠNG ÁN MIN THEO TIÊU CHUẨN CƠ BẢN” và
+              “PHƯƠNG ÁN MAX THEO KỊCH BẢN TỐT”.
+            </p>
+            <div class="tableWrap">
+              <table>
+                <tbody id="investorBody"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card tableCard">
+            <h4>Bài toán tài chính theo PDF</h4>
+            <p>
+              Bảng này tính lợi nhuận ròng sau khi trừ lãi vay 2 năm và ROI trên
+              vốn tự có, đúng theo cách trình bày trong file PDF.
+            </p>
+            <div class="tableWrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Kịch bản</th>
+                    <th class="money">Lãi tăng giá</th>
+                    <th class="money">Thuê 3 năm</th>
+                    <th class="money">LN gộp</th>
+                    <th class="money">Trừ lãi vay</th>
+                    <th class="money">LN ròng</th>
+                    <th>ROI / 5 năm</th>
+                    <th>ROI / năm</th>
+                  </tr>
+                </thead>
+                <tbody id="pdfFinanceBody"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card tableCard">
+            <h4>Góc nhìn nhà đầu tư</h4>
+            <p>
+              Tóm tắt theo cấu trúc trong PDF: vốn bỏ ra, lợi nhuận ròng sau lãi
+              vay và tổng tài sản sau 5 năm.
+            </p>
+            <div class="tableWrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Kịch bản</th>
+                    <th class="money">Vốn bỏ ra</th>
+                    <th class="money">LN ròng sau lãi vay</th>
+                    <th class="money">Tổng tài sản</th>
+                  </tr>
+                </thead>
+                <tbody id="pdfInvestorBody"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card tableCard">
+            <h4>Đánh giá tổng thể theo PDF</h4>
+            <div class="checklistGrid">
+              <div class="checklistBox">
+                <h5>Nên mua khi</h5>
+                <ul id="shouldBuyList"></ul>
+              </div>
+              <div class="checklistBox">
+                <h5>Không nên mua khi</h5>
+                <ul id="shouldNotBuyList"></ul>
+              </div>
+            </div>
+          </div>
+          <div class="card tableCard">
+            <h4>Ví dụ rủi ro định lượng</h4>
+            <p>
+              Các ví dụ này giúp khách hàng thấy rõ tác động của thị trường đi
+              ngang, áp lực sau hỗ trợ lãi suất và rủi ro đòn bẩy tài chính.
+            </p>
+            <div class="tableWrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Tình huống</th>
+                    <th>Giả định</th>
+                    <th class="money">Tác động</th>
+                    <th>Ghi chú</th>
+                  </tr>
+                </thead>
+                <tbody id="riskExampleBody"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card tableCard">
+            <h4>Rủi ro cần trao đổi rõ với khách hàng</h4>
+            <div class="riskGrid" id="riskGrid"></div>
+          </div>
+          <div class="card tableCard">
+            <h4>Logic công thức chính</h4>
+            <div class="formula">
+              <code>Tổng giá = Diện tích × Đơn giá</code><br /><code
+                >Giãn xây: Giá chuẩn = Tổng giá; VTC = Giá chuẩn × 30%; Bank =
+                Giá chuẩn × 70%; Lãi vay = Bank × 10% × 2; Lãi/tháng = Lãi vay /
+                24; Giá TTS = Giá chuẩn × 86%</code
+              ><br /><code
+                >Xây thô: Giá chuẩn = Tổng giá × 90%; VTC = Giá chuẩn × 30%;
+                Bank = Giá chuẩn × 70%; Lãi vay = Bank × 10% × 2; Lãi/tháng =
+                Lãi vay / 24; Giá TTS = Giá chuẩn × 82%</code
+              ><br /><code
+                >Hoàn thiện: Giá chuẩn = Tổng giá × 120%; VTC = Giá chuẩn × 30%;
+                Bank = Giá chuẩn × 70%; Lãi vay = Bank × 10% × 2; Lãi/tháng =
+                Lãi vay / 24; Giá TTS = Giá chuẩn × 77,5%</code
+              ><br /><code
+                >LN kép A+B = Lợi nhuận so với gốc + Lợi nhuận cho thuê 3
+                năm</code
+              ><br /><code
+                >Theo PDF: LN ròng = Lãi tăng giá + Thuê 3 năm - Lãi vay 2 năm;
+                ROI = LN ròng / Vốn tự có</code
+              >
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <div class="modalOverlay" id="leadModal" aria-hidden="true">
+      <div
+        class="modalCard"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="leadModalTitle"
+      >
+        <div class="modalHead">
+          <div>
+            <h3 id="leadModalTitle">
+              Đăng Kí Ngay Nhận Nhiều Thông Tin Mới Nhất
+            </h3>
+            <p>
+              Vui lòng để lại thông tin để BTCLAND hỗ trợ tư vấn và gửi báo cáo
+              tài chính PDF.
+            </p>
+          </div>
+          <button
+            class="modalClose"
+            id="closeLeadModal"
+            type="button"
+            aria-label="Đóng"
+          >
+            ×
+          </button>
+        </div>
+        <div class="modalBody">
+          <form class="modalForm" id="leadForm">
+            <div>
+              <label for="leadName">Họ &amp; Tên người nhận PDF</label
+              ><input
+                id="leadName"
+                type="text"
+                placeholder="Nguyễn Văn A"
+                autocomplete="name"
+              />
+            </div>
+            <div>
+              <label for="leadPhone">Số điện thoại</label
+              ><input
+                id="leadPhone"
+                type="tel"
+                placeholder="0901234567"
+                autocomplete="tel"
+              />
+            </div>
+            <div>
+              <label for="leadEmail">Địa chỉ email</label
+              ><input
+                id="leadEmail"
+                type="email"
+                placeholder="email@gmail.com"
+                autocomplete="email"
+              />
+            </div>
+            <div class="modalError" id="leadError"></div>
+            <p class="modalNote">
+              Sau khi bấm Đăng ký, hệ thống sẽ gửi thông tin về email BTCLAND và
+              xuất báo cáo PDF.
+            </p>
+            <div class="modalActions">
+              <button class="btn primary" id="leadSubmitBtn" type="submit">
+                Đăng ký</button
+              ><button class="btn ghost" id="cancelLeadModal" type="button">
+                Hủy
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="container footerGrid">
+        <div>
+          <h3 style="margin: 0">BTCLAND VIETNAM</h3>
+          <p>
+            Công cụ mô phỏng lợi nhuận kép Vinhomes Saigon Park dựa trên bảng
+            giả định tăng giá và bài toán tài chính. Kết quả chỉ dùng để tư vấn
+            tham khảo, không phải cam kết lợi nhuận.
+          </p>
+        </div>
+        <div class="footerContact">
+          <strong>Thông tin liên hệ</strong><span>Hotline: 0356.99.01.99</span
+          ><span>Email: btclandvn1@gmail.com</span
+          ><span>Địa chỉ: Số 37, Đường 37, KĐT Vạn Phúc</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const $ = (id) => document.getElementById(id);
+      const moneyFmt = new Intl.NumberFormat("vi-VN", {
+        style: "currency",
+        currency: "VND",
+        maximumFractionDigits: 0,
+      });
+      const numFmt = new Intl.NumberFormat("vi-VN");
+
+      const EMAILJS_PUBLIC_KEY = "996QoomXWH2i332j9";
+      const EMAILJS_SERVICE_ID = "service_x58dht6";
+      const EMAILJS_TEMPLATE_ID = "template_lqsajpp";
+      if (window.emailjs) emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+      /*
+        Các hằng số dưới đây được lấy đúng theo file:
+        "BẢNG GIẢ ĐỊNH TĂNG GIÁ LN KÉP MỚI.xlsx"
+        Sheet1:
+        - VTC 30%
+        - Bank 70%
+        - Lãi vay 10% trong 2 năm
+        - Trả lãi mỗi tháng = lãi vay / 24
+        - Cho thuê cơ bản = 20.000.000 × 36
+        - Cho thuê tốt = 30.000.000 × 36
+      */
+      const EXCEL = {
+        equityRate: 0.3,
+        bankRate: 0.7,
+        interestRate: 0.1,
+        interestYears: 2,
+        interestMonths: 24,
+        rentMonths: 36,
+        rentBasicMonthly: 20000000,
+        rentGoodMonthly: 30000000,
+      };
+
+      const PRODUCT_LINES = {
+        gianxay: {
+          label: "GIÃN XÂY",
+          standardMultiplier: 1,
+          ttsRate: 0.86,
+          hasLoanColumns: true,
+          excelRow: 12,
+        },
+        xaytho: {
+          label: "XÂY THÔ",
+          standardMultiplier: 0.9,
+          ttsRate: 0.82,
+          hasLoanColumns: true,
+          excelRow: 13,
+        },
+        hoanthien: {
+          label: "HOÀN THIỆN",
+          standardMultiplier: 1.2,
+          ttsRate: 0.775,
+          hasLoanColumns: true,
+          excelRow: 14,
+        },
+      };
+
+      const SCENARIOS = [
+        {
+          name: "Cơ bản",
+          growth: "8-15%/năm",
+          after: "40%-75%",
+          min: 0.4,
+          max: 0.75,
+        },
+        {
+          name: "Trung bình",
+          growth: "10-20%/năm",
+          after: "50%-100%",
+          min: 0.5,
+          max: 1,
+        },
+        {
+          name: "Tốt",
+          growth: "15-25%/năm",
+          after: "75%-125%",
+          min: 0.75,
+          max: 1.25,
+        },
+        {
+          name: "Mạnh",
+          growth: "20-30%/năm",
+          after: "100%-150%",
+          min: 1,
+          max: 1.5,
+        },
+        {
+          name: "Fomo",
+          growth: "30-40%/năm",
+          after: "120%-200%",
+          min: 1.2,
+          max: 2,
+        },
+      ];
+
+      const RISKS = [
+        [
+          "Tăng giá không đạt kỳ vọng",
+          "Nếu thị trường đi ngang, lợi nhuận thực có thể rất thấp sau khi trừ chi phí lãi vay.",
+        ],
+        [
+          "Thanh khoản",
+          "Nhà phố 6-8 tỷ không phải phân khúc dễ bán; có thể mất 3-12 tháng hoặc phải giảm giá.",
+        ],
+        [
+          "Dòng tiền sau hỗ trợ lãi suất",
+          "Khoản vay 70% có thể tạo áp lực lãi và gốc lớn khi hết thời gian hỗ trợ.",
+        ],
+        [
+          "Khai thác cho thuê",
+          "Mức 20-30 triệu/tháng phụ thuộc cư dân, thương mại, trường học và mật độ dân số.",
+        ],
+        [
+          "Hạ tầng chậm tiến độ",
+          "Metro, quốc lộ, vành đai, trường đại học quốc tế và hệ sinh thái đô thị nếu chậm sẽ ảnh hưởng tốc độ tăng giá.",
+        ],
+        [
+          "Đòn bẩy tài chính",
+          "Giá tăng giúp lợi nhuận mạnh, nhưng giá giảm 10-20% có thể bào mòn 33-67% vốn tự có.",
+        ],
+      ];
+
+      const PDF_FINANCE = {
+        midRentTotal: 960000000,
+        holdYears: 5,
+        basic: {
+          name: "Cơ bản",
+          min: 0.4,
+          max: 0.4,
+          rent: EXCEL.rentBasicMonthly * EXCEL.rentMonths,
+        },
+        medium: { name: "Trung bình", min: 0.5, max: 1, rent: 960000000 },
+        good: {
+          name: "Tốt",
+          min: 0.75,
+          max: 2,
+          rent: EXCEL.rentGoodMonthly * EXCEL.rentMonths,
+        },
+      };
+
+      const SHOULD_BUY = [
+        "Có vốn tự có tối thiểu 30-40%.",
+        "Thu nhập ổn định để chịu được áp lực vay.",
+        "Xác định nắm giữ 5-7 năm.",
+        "Không phụ thuộc hoàn toàn vào tiền thuê.",
+      ];
+
+      const SHOULD_NOT_BUY = [
+        "Chỉ có 15-20% vốn.",
+        "Phải vay tối đa.",
+        "Kỳ vọng lướt sóng 1-2 năm.",
+        "Phụ thuộc dòng tiền thuê để trả ngân hàng.",
+      ];
+
+      function onlyDigits(v) {
+        return String(v || "").replace(/[^0-9]/g, "");
+      }
+
+      function parseMoney(v) {
+        return Number(onlyDigits(v)) || 0;
+      }
+
+      function parseDecimal(v) {
+        return (
+          Number(
+            String(v || "")
+              .replace(",", ".")
+              .replace(/[^0-9.]/g, ""),
+          ) || 0
+        );
+      }
+
+      function money(v) {
+        return Number.isFinite(v) ? moneyFmt.format(Math.round(v)) : "—";
+      }
+
+      function pct(v) {
+        return Number.isFinite(v)
+          ? (Math.round(v * 10000) / 100).toString().replace(".", ",") + "%"
+          : "—";
+      }
+
+      function setText(id, v) {
+        $(id).textContent = v;
+      }
+
+      function formatMoneyInput(id) {
+        const el = $(id);
+        const raw = onlyDigits(el.value);
+        el.value = raw ? numFmt.format(Number(raw)) : "";
+      }
+
+      function inputData() {
+        const area = parseDecimal($("areaInput").value);
+        const unitPrice = parseMoney($("unitPriceInput").value);
+        const rawPrice = area * unitPrice;
+
+        return {
+          customerDisplayName:
+            $("customerDisplayName").value.trim() || "quý anh chị khách hàng",
+          staffDisplayName:
+            $("staffDisplayName").value.trim() || "Nhân viên BTCLAND",
+          unitType: $("unitType").value.trim() || "Liền kề",
+          productLine: $("productLine").value,
+          area,
+          unitPrice,
+          rawPrice,
+
+          // Các dòng dưới đây giữ đúng hằng số Excel, không lấy giá trị nhập để tránh lệch số.
+          equityRate: EXCEL.equityRate,
+          loanRate: EXCEL.bankRate,
+          interestRate: EXCEL.interestRate,
+          interestYears: EXCEL.interestYears,
+          rentMonths: EXCEL.rentMonths,
+          rentBasic: EXCEL.rentBasicMonthly,
+          rentGood: EXCEL.rentGoodMonthly,
+        };
+      }
+
+      function validateInput(input) {
+        return input.area > 0 && input.unitPrice > 0 && input.rawPrice > 0;
+      }
+
+      function lineResult(input, key) {
+        const line = PRODUCT_LINES[key];
+        const standard = input.rawPrice * line.standardMultiplier;
+        const tts = standard * line.ttsRate;
+
+        if (!line.hasLoanColumns) {
+          return {
+            key,
+            line,
+            standard,
+            equity: null,
+            bank: null,
+            interest: null,
+            interestMonthly: null,
+            tts,
+          };
+        }
+
+        const equity = standard * EXCEL.equityRate;
+        const bank = standard * EXCEL.bankRate;
+        const interest = bank * EXCEL.interestRate * EXCEL.interestYears;
+        const interestMonthly = interest / EXCEL.interestMonths;
+
+        return {
+          key,
+          line,
+          standard,
+          equity,
+          bank,
+          interest,
+          interestMonthly,
+          tts,
+        };
+      }
+
+      function currentResult() {
+        const input = inputData();
+        return lineResult(input, input.productLine);
+      }
+
+      function growthRows(input) {
+        const base = input.rawPrice; // Theo Excel: J/K = H/I - D12, mà D12 = D9.
+        return SCENARIOS.map((s) => {
+          const futureMin = input.rawPrice * (1 + s.min);
+          const futureMax = input.rawPrice * (1 + s.max);
+          const profitMin = futureMin - base;
+          const profitMax = futureMax - base;
+
+          return {
+            ...s,
+            minPercent: s.min,
+            maxPercent: s.max,
+            futureMin,
+            futureMax,
+            profitMin,
+            profitMax,
+          };
+        });
+      }
+
+      function minPlanRows(input) {
+        const rentTotal = EXCEL.rentBasicMonthly * EXCEL.rentMonths;
+        return growthRows(input).map((s) => ({
+          name: s.name,
+          rent: rentTotal,
+          rentLabel: "20TR/THÁNG",
+          profit: s.profitMin,
+          compound: rentTotal + s.profitMin,
+        }));
+      }
+
+      function maxPlanRows(input) {
+        const rentTotal = EXCEL.rentGoodMonthly * EXCEL.rentMonths;
+        return growthRows(input).map((s) => ({
+          name: s.name,
+          rent: rentTotal,
+          rentLabel: "30TR/THÁNG",
+          profit: s.profitMax,
+          compound: rentTotal + s.profitMax,
+        }));
+      }
+
+      function rangeText(min, max, formatter = money) {
+        return min === max
+          ? formatter(min)
+          : `${formatter(min)} - ${formatter(max)}`;
+      }
+
+      function roiText(value, equity) {
+        return equity > 0 ? pct(value / equity) : "—";
+      }
+
+      function pdfFinanceRows(input, lineData = currentResult()) {
+        const interest = lineData.interest || 0;
+        const equity = lineData.equity || input.rawPrice * EXCEL.equityRate;
+        const rows = [];
+
+        const make = (cfg) => {
+          const gainMin = input.rawPrice * cfg.min;
+          const gainMax = input.rawPrice * cfg.max;
+          const grossMin = gainMin + cfg.rent;
+          const grossMax = gainMax + cfg.rent;
+          const netMin = grossMin - interest;
+          const netMax = grossMax - interest;
+          return {
+            name: cfg.name,
+            gainMin,
+            gainMax,
+            rent: cfg.rent,
+            grossMin,
+            grossMax,
+            interest,
+            netMin,
+            netMax,
+            roiMin: equity ? netMin / equity : 0,
+            roiMax: equity ? netMax / equity : 0,
+            annualMin: equity ? netMin / equity / PDF_FINANCE.holdYears : 0,
+            annualMax: equity ? netMax / equity / PDF_FINANCE.holdYears : 0,
+            assetMin: input.rawPrice * (1 + cfg.min),
+            assetMax: input.rawPrice * (1 + cfg.max),
+          };
+        };
+
+        rows.push(make(PDF_FINANCE.basic));
+        rows.push(make(PDF_FINANCE.medium));
+        rows.push(make(PDF_FINANCE.good));
+        return rows;
+      }
+
+      function pdfInvestorViewRows(input, lineData = currentResult()) {
+        const equity = lineData.equity || input.rawPrice * EXCEL.equityRate;
+        return pdfFinanceRows(input, lineData).map((r) => ({
+          name: r.name,
+          capital: equity,
+          netMin: r.netMin,
+          netMax: r.netMax,
+          assetMin: r.assetMin,
+          assetMax: r.assetMax,
+        }));
+      }
+
+      function riskExampleRows(input, lineData = currentResult()) {
+        const equity = lineData.equity || input.rawPrice * EXCEL.equityRate;
+        const bank = lineData.bank || input.rawPrice * EXCEL.bankRate;
+        const interest = lineData.interest || 0;
+        const sidewaysSale = input.rawPrice * (6.5 / 6);
+        const sidewaysGain = sidewaysSale - input.rawPrice;
+        const sidewaysNet =
+          sidewaysGain + EXCEL.rentBasicMonthly * EXCEL.rentMonths - interest;
+        const monthlyInterestAfterSupport = (bank * EXCEL.interestRate) / 12;
+        const loss10 = input.rawPrice * 0.1;
+        const loss20 = input.rawPrice * 0.2;
+
+        return [
+          {
+            title: "Thị trường đi ngang",
+            assumption: `Giá bán sau 5 năm khoảng ${money(sidewaysSale)}; thuê 3 năm ${money(EXCEL.rentBasicMonthly * EXCEL.rentMonths)}; trừ lãi vay ${money(interest)}.`,
+            impact: sidewaysNet,
+            note: "Theo PDF: lợi nhuận thực có thể rất thấp nếu tăng giá không đạt kỳ vọng.",
+          },
+          {
+            title: "Áp lực sau hỗ trợ lãi suất",
+            assumption: `Khoản vay ${money(bank)} nếu lãi suất 10%/năm.`,
+            impact: monthlyInterestAfterSupport,
+            note: "Tiền lãi mỗi tháng; nếu vừa trả gốc vừa trả lãi có thể cao hơn đáng kể.",
+          },
+          {
+            title: "Giảm giá 10%",
+            assumption: `Tài sản giảm 10% so với giá mua ${money(input.rawPrice)}.`,
+            impact: -loss10,
+            note: `Tương đương mất khoảng ${roiText(loss10, equity)} vốn tự có.`,
+          },
+          {
+            title: "Giảm giá 20%",
+            assumption: `Tài sản giảm 20% so với giá mua ${money(input.rawPrice)}.`,
+            impact: -loss20,
+            note: `Tương đương mất khoảng ${roiText(loss20, equity)} vốn tự có.`,
+          },
+        ];
+      }
+
+      function renderPolicy(input) {
+        $("policyBody").innerHTML = Object.keys(PRODUCT_LINES)
+          .map((key) => {
+            const x = lineResult(input, key);
+            return `
+              <tr>
+                <td>${x.line.label}</td>
+                <td class="money">${money(x.standard)}</td>
+                <td class="money">${x.equity === null ? "—" : money(x.equity)}</td>
+                <td class="money">${x.bank === null ? "—" : money(x.bank)}</td>
+                <td class="money">${x.interest === null ? "—" : money(x.interest)}</td>
+                <td class="money">${x.interestMonthly === null ? "—" : money(x.interestMonthly)}</td>
+                <td class="money good">${money(x.tts)}</td>
+              </tr>
+            `;
+          })
+          .join("");
+      }
+
+      function renderScenarios(input) {
+        const rows = growthRows(input);
+
+        $("scenarioBody").innerHTML = rows
+          .map(
+            (s) => `
+            <tr>
+              <td>${s.name}</td>
+              <td>${s.growth}</td>
+              <td>${s.after}</td>
+              <td>${pct(s.minPercent)}</td>
+              <td>${pct(s.maxPercent)}</td>
+              <td class="money">${money(s.futureMin)}</td>
+              <td class="money">${money(s.futureMax)}</td>
+              <td class="money good">${money(s.profitMin)}</td>
+              <td class="money good">${money(s.profitMax)}</td>
+            </tr>
+          `,
+          )
+          .join("");
+
+        const minRows = minPlanRows(input);
+        const maxRows = maxPlanRows(input);
+        const minHtml = minRows
+          .map(
+            (r) => `
+            <tr>
+              <td>${r.name}</td>
+              <td class="money">${money(r.rent)}</td>
+              <td>${r.rentLabel}</td>
+              <td class="money">${money(r.profit)}</td>
+              <td class="money good">${money(r.compound)}</td>
+            </tr>
+          `,
+          )
+          .join("");
+
+        const maxHtml = maxRows
+          .map(
+            (r) => `
+            <tr>
+              <td>${r.name}</td>
+              <td class="money">${money(r.rent)}</td>
+              <td>${r.rentLabel}</td>
+              <td class="money">${money(r.profit)}</td>
+              <td class="money good">${money(r.compound)}</td>
+            </tr>
+          `,
+          )
+          .join("");
+
+        $("investorBody").innerHTML = `
+          <tr><th colspan="5">PHƯƠNG ÁN MIN THEO TIÊU CHUẨN CƠ BẢN</th></tr>
+          <tr>
+            <th>Kịch bản</th>
+            <th class="money">Lợi nhuận cho thuê 3 năm</th>
+            <th>Mức cho thuê full căn</th>
+            <th class="money">LN / Giá bán</th>
+            <th class="money">LN kép A + B</th>
+          </tr>
+          ${minHtml}
+          <tr><th colspan="5">PHƯƠNG ÁN MAX THEO KỊCH BẢN TỐT</th></tr>
+          <tr>
+            <th>Kịch bản</th>
+            <th class="money">Lợi nhuận cho thuê 3 năm</th>
+            <th>Mức cho thuê full căn</th>
+            <th class="money">LN / Giá bán</th>
+            <th class="money">LN kép A + B</th>
+          </tr>
+          ${maxHtml}
+        `;
+
+        const basicMin = minRows[0];
+        const basicMax = maxRows[0];
+        $("investorSummary").textContent =
+          `Theo kịch bản cơ bản trong Excel: LN kép MIN = ${money(basicMin.compound)}, LN kép MAX = ${money(basicMax.compound)}.`;
+      }
+
+      function renderPdfFinance(input) {
+        const r = currentResult();
+        const rows = pdfFinanceRows(input, r);
+        $("pdfFinanceBody").innerHTML = rows
+          .map(
+            (x) => `
+            <tr>
+              <td>${x.name}</td>
+              <td class="money">${rangeText(x.gainMin, x.gainMax)}</td>
+              <td class="money">${money(x.rent)}</td>
+              <td class="money">${rangeText(x.grossMin, x.grossMax)}</td>
+              <td class="money">${money(x.interest)}</td>
+              <td class="money good">${rangeText(x.netMin, x.netMax)}</td>
+              <td>${rangeText(x.roiMin, x.roiMax, pct)}</td>
+              <td>${rangeText(x.annualMin, x.annualMax, pct)}</td>
+            </tr>
+          `,
+          )
+          .join("");
+
+        $("pdfInvestorBody").innerHTML = pdfInvestorViewRows(input, r)
+          .map(
+            (x) => `
+            <tr>
+              <td>${x.name}</td>
+              <td class="money">${money(x.capital)}</td>
+              <td class="money good">${rangeText(x.netMin, x.netMax)}</td>
+              <td class="money">${rangeText(x.assetMin, x.assetMax)}</td>
+            </tr>
+          `,
+          )
+          .join("");
+      }
+
+      function renderRiskExamples(input) {
+        $("riskExampleBody").innerHTML = riskExampleRows(input)
+          .map(
+            (x) => `
+            <tr>
+              <td>${x.title}</td>
+              <td>${x.assumption}</td>
+              <td class="money ${x.impact < 0 ? "danger" : "good"}">${money(x.impact)}</td>
+              <td>${x.note}</td>
+            </tr>
+          `,
+          )
+          .join("");
+      }
+
+      function renderChecklists() {
+        $("shouldBuyList").innerHTML = SHOULD_BUY.map(
+          (x) => `<li>${x}</li>`,
+        ).join("");
+        $("shouldNotBuyList").innerHTML = SHOULD_NOT_BUY.map(
+          (x) => `<li>${x}</li>`,
+        ).join("");
+      }
+
+      function renderRisks() {
+        $("riskGrid").innerHTML = RISKS.map(
+          ([t, d]) => `<div class="riskItem"><b>${t}</b><br>${d}</div>`,
+        ).join("");
+      }
+
+      function updateUI() {
+        const input = inputData();
+        const valid = validateInput(input);
+        const r = currentResult();
+
+        $("inputError").style.display = valid ? "none" : "block";
+        $("pdfBtn").disabled = !valid;
+        $("topPdfBtn").disabled = !valid;
+
+        if (!valid) {
+          [
+            "miniRaw",
+            "miniEquity",
+            "kpiStandard",
+            "kpiLoan",
+            "kpiInterest",
+            "kpiRoi",
+          ].forEach((id) => setText(id, "—"));
+          $("policyBody").innerHTML = "";
+          $("scenarioBody").innerHTML = "";
+          $("investorBody").innerHTML = "";
+          $("pdfFinanceBody").innerHTML = "";
+          $("pdfInvestorBody").innerHTML = "";
+          $("riskExampleBody").innerHTML = "";
+          $("investorSummary").textContent =
+            "Tính đúng theo hai bảng: “PHƯƠNG ÁN MIN THEO TIÊU CHUẨN CƠ BẢN” và “PHƯƠNG ÁN MAX THEO KỊCH BẢN TỐT”.";
+          return;
+        }
+
+        const basicMin = minPlanRows(input)[0];
+
+        setText("miniRaw", money(input.rawPrice));
+        setText("miniEquity", r.equity === null ? "—" : money(r.equity));
+        setText("kpiStandard", money(r.standard));
+        setText("kpiLoan", r.bank === null ? "—" : money(r.bank));
+        setText("kpiInterest", r.interest === null ? "—" : money(r.interest));
+        setText("kpiRoi", money(basicMin.compound));
+
+        renderPolicy(input);
+        renderScenarios(input);
+        renderPdfFinance(input);
+        renderRiskExamples(input);
+      }
+
+      function clearInputs() {
+        [
+          "customerDisplayName",
+          "staffDisplayName",
+          "unitType",
+          "areaInput",
+          "unitPriceInput",
+        ].forEach((id) => ($(id).value = ""));
+
+        $("productLine").value = "gianxay";
+        updateUI();
+      }
+
+      function cleanPhone(v) {
+        return String(v || "").replace(/[\s.-]/g, "");
+      }
+
+      function getLeadData() {
+        return {
+          name: $("leadName").value.trim(),
+          phone: cleanPhone($("leadPhone").value),
+          email: $("leadEmail").value.trim(),
+        };
+      }
+
+      function validateLeadData(d) {
+        if (!d.name) return "Vui lòng nhập Họ & Tên.";
+        if (!/^(0|\+84|84)(3|5|7|8|9)[0-9]{8}$/.test(d.phone)) {
+          return "Vui lòng nhập số điện thoại hợp lệ.";
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) {
+          return "Vui lòng nhập địa chỉ email hợp lệ.";
+        }
+        return "";
+      }
+
+      function openLeadModal() {
+        const input = inputData();
+        if (!validateInput(input)) {
+          $("inputError").style.display = "block";
+          return;
+        }
+        $("leadError").style.display = "none";
+        $("leadModal").classList.add("show");
+        $("leadModal").setAttribute("aria-hidden", "false");
+        setTimeout(() => $("leadName").focus(), 80);
+      }
+
+      function hideLeadModal() {
+        $("leadModal").classList.remove("show");
+        $("leadModal").setAttribute("aria-hidden", "true");
+      }
+
+      async function sendLeadEmail(customer) {
+        if (!window.emailjs) {
+          throw new Error(
+            "Không tải được EmailJS. Vui lòng kiểm tra Internet hoặc script EmailJS.",
+          );
+        }
+
+        const input = inputData();
+        const r = currentResult();
+        const basicMin = minPlanRows(input)[0];
+        const basicMax = maxPlanRows(input)[0];
+        const pdfBasic = pdfFinanceRows(input, r)[0];
+        const pdfMedium = pdfFinanceRows(input, r)[1];
+        const pdfGood = pdfFinanceRows(input, r)[2];
+
+        const params = {
+          to_email: "hoangphibtcland@gmail.com",
+          from_name: "BTCLAND VIETNAM",
+
+          customer_name: customer.name,
+          customer_phone: customer.phone,
+          customer_email: customer.email,
+          registered_at: new Date().toLocaleString("vi-VN"),
+
+          pdf_customer_name: input.customerDisplayName,
+          staff_name: input.staffDisplayName,
+
+          project_name: "Vinhomes Saigon Park",
+          quote_type: "Bảng giả định tăng giá LN kép",
+          unit_type: input.unitType,
+          product_line: r.line.label,
+
+          raw_price: money(input.rawPrice),
+          standard_price: money(r.standard),
+          equity: r.equity === null ? "—" : money(r.equity),
+          bank_loan: r.bank === null ? "—" : money(r.bank),
+          interest_cost: r.interest === null ? "—" : money(r.interest),
+          rent_basic: `${money(EXCEL.rentBasicMonthly)}/tháng`,
+          rent_good: `${money(EXCEL.rentGoodMonthly)}/tháng`,
+
+          basic_ln_kep_min: money(basicMin.compound),
+          basic_ln_kep_max: money(basicMax.compound),
+          pdf_basic_net_profit: money(pdfBasic.netMin),
+          pdf_basic_roi: pct(pdfBasic.roiMin),
+          pdf_medium_net_profit: rangeText(pdfMedium.netMin, pdfMedium.netMax),
+          pdf_good_net_profit: rangeText(pdfGood.netMin, pdfGood.netMax),
+          pdf_good_roi: rangeText(pdfGood.roiMin, pdfGood.roiMax, pct),
+        };
+
+        return emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
+      }
+
+      function c(text, opt = {}) {
+        return {
+          text: String(text ?? ""),
+          fontSize: opt.fontSize || 8.5,
+          bold: !!opt.bold,
+          color: opt.color || "#153126",
+          alignment: opt.alignment || "left",
+          margin: opt.margin || [0, 0, 0, 0],
+        };
+      }
+
+      function th(t) {
+        return {
+          text: t,
+          bold: true,
+          fillColor: "#e7f3ec",
+          color: "#143b2a",
+          fontSize: 8.5,
+        };
+      }
+
+      function makeTable(headers, body, widths) {
+        return {
+          table: {
+            headerRows: 1,
+            widths,
+            body: [headers.map(th), ...body],
+            dontBreakRows: false,
+          },
+          layout: {
+            hLineColor: () => "#cfded4",
+            vLineColor: () => "#cfded4",
+            paddingTop: () => 5,
+            paddingBottom: () => 5,
+            paddingLeft: () => 5,
+            paddingRight: () => 5,
+          },
+          margin: [0, 6, 0, 10],
+        };
+      }
+
+      function makeTableSection(title, tableNode) {
+        return {
+          stack: [
+            {
+              text: title,
+              style: "subTitle",
+              margin: [0, 10, 0, 3],
+            },
+            tableNode,
+          ],
+          unbreakable: true,
+        };
+      }
+
+      function greetingBox(input) {
+        return {
+          table: {
+            widths: ["*"],
+            body: [
+              [
+                {
+                  stack: [
+                    {
+                      text: `- Nhân viên tư vấn ${input.staffDisplayName}`,
+                      bold: true,
+                      fontSize: 10,
+                      color: "#0a4d31",
+                      margin: [0, 0, 0, 4],
+                    },
+                    {
+                      text: `- Kính gửi quý khách hàng ${input.customerDisplayName}`,
+                      bold: true,
+                      fontSize: 10,
+                      color: "#153126",
+                    },
+                  ],
+                  margin: [8, 6, 8, 6],
+                },
+              ],
+            ],
+          },
+          layout: {
+            hLineWidth: () => 1.3,
+            vLineWidth: () => 1.3,
+            hLineColor: () => "#e11d48",
+            vLineColor: () => "#e11d48",
+            paddingTop: () => 0,
+            paddingBottom: () => 0,
+            paddingLeft: () => 0,
+            paddingRight: () => 0,
+          },
+          margin: [0, 8, 0, 10],
+        };
+      }
+
+      function exportPDF(customer = null) {
+        const input = inputData();
+        const r = currentResult();
+        const now = new Date().toLocaleString("vi-VN");
+
+        const policyBody = Object.keys(PRODUCT_LINES).map((key) => {
+          const x = lineResult(input, key);
+          return [
+            c(x.line.label, { bold: true }),
+            c(money(x.standard), { alignment: "right" }),
+            c(x.equity === null ? "—" : money(x.equity), {
+              alignment: "right",
+            }),
+            c(x.bank === null ? "—" : money(x.bank), { alignment: "right" }),
+            c(x.interest === null ? "—" : money(x.interest), {
+              alignment: "right",
+            }),
+            c(x.interestMonthly === null ? "—" : money(x.interestMonthly), {
+              alignment: "right",
+            }),
+            c(money(x.tts), {
+              alignment: "right",
+              bold: true,
+              color: "#0a4d31",
+            }),
+          ];
+        });
+
+        const growthBody = growthRows(input).map((s) => [
+          c(s.name, { bold: true }),
+          c(s.growth),
+          c(s.after),
+          c(pct(s.minPercent)),
+          c(pct(s.maxPercent)),
+          c(money(s.futureMin), { alignment: "right" }),
+          c(money(s.futureMax), { alignment: "right" }),
+          c(money(s.profitMin), {
+            alignment: "right",
+            bold: true,
+            color: "#0a4d31",
+          }),
+          c(money(s.profitMax), {
+            alignment: "right",
+            bold: true,
+            color: "#0a4d31",
+          }),
+        ]);
+
+        const minBody = minPlanRows(input).map((row) => [
+          c(row.name, { bold: true }),
+          c(money(row.rent), { alignment: "right" }),
+          c(row.rentLabel),
+          c(money(row.profit), { alignment: "right" }),
+          c(money(row.compound), {
+            alignment: "right",
+            bold: true,
+            color: "#0a4d31",
+          }),
+        ]);
+
+        const maxBody = maxPlanRows(input).map((row) => [
+          c(row.name, { bold: true }),
+          c(money(row.rent), { alignment: "right" }),
+          c(row.rentLabel),
+          c(money(row.profit), { alignment: "right" }),
+          c(money(row.compound), {
+            alignment: "right",
+            bold: true,
+            color: "#0a4d31",
+          }),
+        ]);
+
+        const riskBody = RISKS.map((x) => [c(x[0], { bold: true }), c(x[1])]);
+        const pdfFinanceBody = pdfFinanceRows(input, r).map((x) => [
+          c(x.name, { bold: true }),
+          c(rangeText(x.gainMin, x.gainMax), { alignment: "right" }),
+          c(money(x.rent), { alignment: "right" }),
+          c(rangeText(x.grossMin, x.grossMax), { alignment: "right" }),
+          c(money(x.interest), { alignment: "right" }),
+          c(rangeText(x.netMin, x.netMax), {
+            alignment: "right",
+            bold: true,
+            color: "#0a4d31",
+          }),
+          c(rangeText(x.roiMin, x.roiMax, pct)),
+          c(rangeText(x.annualMin, x.annualMax, pct)),
+        ]);
+        const pdfInvestorBody = pdfInvestorViewRows(input, r).map((x) => [
+          c(x.name, { bold: true }),
+          c(money(x.capital), { alignment: "right" }),
+          c(rangeText(x.netMin, x.netMax), {
+            alignment: "right",
+            bold: true,
+            color: "#0a4d31",
+          }),
+          c(rangeText(x.assetMin, x.assetMax), { alignment: "right" }),
+        ]);
+        const riskExampleBody = riskExampleRows(input, r).map((x) => [
+          c(x.title, { bold: true }),
+          c(x.assumption),
+          c(money(x.impact), {
+            alignment: "right",
+            bold: true,
+            color: x.impact < 0 ? "#b42318" : "#0a4d31",
+          }),
+          c(x.note),
+        ]);
+        const shouldBuyBody = SHOULD_BUY.map((x) => [
+          c("Nên mua", { bold: true, color: "#0a4d31" }),
+          c(x),
+        ]);
+        const shouldNotBuyBody = SHOULD_NOT_BUY.map((x) => [
+          c("Không nên mua", { bold: true, color: "#b42318" }),
+          c(x),
+        ]);
+
+        const doc = {
+          pageSize: "A4",
+          pageOrientation: "landscape",
+          pageMargins: [28, 26, 28, 26],
+          defaultStyle: { font: "Roboto", fontSize: 9, color: "#153126" },
+          content: [
+            {
+              text: "BTCLAND VIETNAM · Bảng giả định tăng giá LN kép Vinhomes Saigon Park",
+              style: "title",
+            },
+            {
+              text: `Hotline: 0356.99.01.99  |  Email: btclandvn1@gmail.com  |  Ngày xuất: ${now}`,
+              style: "small",
+            },
+            {
+              canvas: [
+                {
+                  type: "line",
+                  x1: 0,
+                  y1: 0,
+                  x2: 785,
+                  y2: 0,
+                  lineWidth: 1,
+                  lineColor: "#0e6b42",
+                },
+              ],
+              margin: [0, 8, 0, 6],
+            },
+            greetingBox(input),
+            {
+              columns: [
+                {
+                  width: "50%",
+                  stack: [
+                    { text: "Thông tin đầu vào", style: "subTitle" },
+                    makeTable(
+                      ["Thông tin", "Giá trị"],
+                      [
+                        [c("Loại căn", { bold: true }), c(input.unitType)],
+                        [c("Diện tích", { bold: true }), c(`${input.area} m²`)],
+                        [
+                          c("Đơn giá", { bold: true }),
+                          c(money(input.unitPrice), { alignment: "right" }),
+                        ],
+                        [
+                          c("Tổng giá", { bold: true }),
+                          c(money(input.rawPrice), { alignment: "right" }),
+                        ],
+                        [
+                          c("Dòng sản phẩm đang xem", { bold: true }),
+                          c(r.line.label),
+                        ],
+                      ],
+                      [150, "*"],
+                    ),
+                  ],
+                },
+                {
+                  width: "50%",
+                  stack: [
+                    {
+                      text: "Chỉ số theo dòng sản phẩm đang xem",
+                      style: "subTitle",
+                    },
+                    makeTable(
+                      ["Chỉ số", "Giá trị"],
+                      [
+                        [
+                          c("Giá chuẩn", { bold: true }),
+                          c(money(r.standard), { alignment: "right" }),
+                        ],
+                        [
+                          c("VTC 30%", { bold: true }),
+                          c(r.equity === null ? "—" : money(r.equity), {
+                            alignment: "right",
+                          }),
+                        ],
+                        [
+                          c("Bank 70%", { bold: true }),
+                          c(r.bank === null ? "—" : money(r.bank), {
+                            alignment: "right",
+                          }),
+                        ],
+                        [
+                          c("Trả lãi 10% 2 năm", { bold: true }),
+                          c(r.interest === null ? "—" : money(r.interest), {
+                            alignment: "right",
+                          }),
+                        ],
+                        [
+                          c("Trả lãi mỗi tháng", { bold: true }),
+                          c(
+                            r.interestMonthly === null
+                              ? "—"
+                              : money(r.interestMonthly),
+                            { alignment: "right" },
+                          ),
+                        ],
+                        [
+                          c("Giá thanh toán sớm", { bold: true }),
+                          c(money(r.tts), { alignment: "right", bold: true }),
+                        ],
+                      ],
+                      [150, "*"],
+                    ),
+                  ],
+                },
+              ],
+              columnGap: 18,
+            },
+            ...(customer
+              ? [
+                  { text: "Thông tin khách hàng đăng ký", style: "subTitle" },
+                  makeTable(
+                    ["Họ & Tên", "Số điện thoại", "Email", "Thời điểm đăng ký"],
+                    [
+                      [
+                        c(customer.name),
+                        c(customer.phone),
+                        c(customer.email),
+                        c(now),
+                      ],
+                    ],
+                    [150, 100, 190, 130],
+                  ),
+                ]
+              : []),
+            { text: "Bảng giá, vốn tự có và lãi vay", style: "subTitle" },
+            makeTable(
+              [
+                "Dòng SP",
+                "Giá chuẩn",
+                "VTC",
+                "Bank",
+                "Lãi vay",
+                "Lãi/tháng",
+                "Giá TTS",
+              ],
+              policyBody,
+              [95, 100, 90, 90, 90, 90, "*"],
+            ),
+            {
+              text: "Bảng giả định tăng giá",
+              style: "subTitle",
+              pageBreak: "before",
+            },
+            makeTable(
+              [
+                "Kịch bản",
+                "Tăng/năm",
+                "Sau 5 năm",
+                "MIN",
+                "MAX",
+                "LN MIN",
+                "LN MAX",
+                "LN MIN so với gốc",
+                "LN MAX so với gốc",
+              ],
+              growthBody,
+              [65, 70, 65, 40, 40, 85, 85, 95, "*"],
+            ),
+            { text: "Phương án MIN theo tiêu chuẩn cơ bản", style: "subTitle" },
+            makeTable(
+              [
+                "Kịch bản",
+                "Lợi nhuận cho thuê 3 năm",
+                "Mức thuê full căn",
+                "LN / Giá bán",
+                "LN kép A+B",
+              ],
+              minBody,
+              [80, 125, 95, 110, "*"],
+            ),
+            { text: "Phương án MAX theo kịch bản tốt", style: "subTitle" },
+            makeTable(
+              [
+                "Kịch bản",
+                "Lợi nhuận cho thuê 3 năm",
+                "Mức thuê full căn",
+                "LN / Giá bán",
+                "LN kép A+B",
+              ],
+              maxBody,
+              [80, 125, 95, 110, "*"],
+            ),
+            {
+              text: "Bài toán tài chính theo PDF",
+              style: "subTitle",
+              pageBreak: "before",
+            },
+            makeTable(
+              [
+                "Kịch bản",
+                "Lãi tăng giá",
+                "Thuê 3 năm",
+                "LN gộp",
+                "Trừ lãi vay",
+                "LN ròng",
+                "ROI / 5 năm",
+                "ROI / năm",
+              ],
+              pdfFinanceBody,
+              [65, 85, 80, 85, 80, 90, 65, "*"],
+            ),
+            { text: "Góc nhìn nhà đầu tư", style: "subTitle" },
+            makeTable(
+              ["Kịch bản", "Vốn bỏ ra", "LN ròng sau lãi vay", "Tổng tài sản"],
+              pdfInvestorBody,
+              [90, 110, 170, "*"],
+            ),
+            { text: "Đánh giá tổng thể theo PDF", style: "subTitle" },
+            makeTable(
+              ["Nhóm", "Điều kiện"],
+              [...shouldBuyBody, ...shouldNotBuyBody],
+              [100, "*"],
+            ),
+            makeTableSection(
+              "Ví dụ rủi ro định lượng",
+              makeTable(
+                ["Tình huống", "Giả định", "Tác động", "Ghi chú"],
+                riskExampleBody,
+                [100, 280, 100, "*"],
+              ),
+            ),
+            {
+              text: "Rủi ro cần trao đổi rõ",
+              style: "subTitle",
+            },
+            makeTable(["Rủi ro", "Ghi chú"], riskBody, [150, "*"]),
+            { text: "Công thức chính", style: "subTitle" },
+            makeTable(
+              ["Hạng mục", "Công thức"],
+              [
+                [c("Tổng giá", { bold: true }), c("Diện tích × Đơn giá")],
+                [
+                  c("Giãn xây", { bold: true }),
+                  c(
+                    "Giá chuẩn = Tổng giá; VTC = Giá chuẩn × 30%; Bank = Giá chuẩn × 70%; Lãi vay = Bank × 10% × 2; Lãi/tháng = Lãi vay / 24; Giá TTS = Giá chuẩn × 86%",
+                  ),
+                ],
+                [
+                  c("Xây thô", { bold: true }),
+                  c(
+                    "Giá chuẩn = Tổng giá × 90%; VTC = Giá chuẩn × 30%; Bank = Giá chuẩn × 70%; Lãi vay = Bank × 10% × 2; Lãi/tháng = Lãi vay / 24; Giá TTS = Giá chuẩn × 82%",
+                  ),
+                ],
+                [
+                  c("Hoàn thiện", { bold: true }),
+                  c(
+                    "Giá chuẩn = Tổng giá × 120%; VTC = Giá chuẩn × 30%; Bank = Giá chuẩn × 70%; Lãi vay = Bank × 10% × 2; Lãi/tháng = Lãi vay / 24; Giá TTS = Giá chuẩn × 77,5%",
+                  ),
+                ],
+                [
+                  c("LN kép A+B", { bold: true }),
+                  c("Lợi nhuận cho thuê 3 năm + LN / Giá bán"),
+                ],
+                [
+                  c("Theo PDF", { bold: true }),
+                  c(
+                    "LN ròng = Lãi tăng giá + Thuê 3 năm - Lãi vay 2 năm; ROI = LN ròng / Vốn tự có",
+                  ),
+                ],
+              ],
+              [130, "*"],
+            ),
+          ],
+          styles: {
+            title: { fontSize: 17, bold: true, color: "#0a4d31" },
+            subTitle: {
+              fontSize: 12,
+              bold: true,
+              color: "#0a4d31",
+              margin: [0, 10, 0, 3],
+            },
+            small: { fontSize: 8, color: "#5f736a" },
+          },
+        };
+
+        pdfMake
+          .createPdf(doc)
+          .download(
+            `BTCLAND_Bang_Gia_Dinh_Tang_Gia_LN_Kep_VHSGP_${r.line.label.replace(/\s+/g, "_")}.pdf`,
+          );
+      }
+
+      $("pdfBtn").addEventListener("click", openLeadModal);
+      $("topPdfBtn").addEventListener("click", openLeadModal);
+      $("resetBtn").addEventListener("click", clearInputs);
+      $("closeLeadModal").addEventListener("click", hideLeadModal);
+      $("cancelLeadModal").addEventListener("click", hideLeadModal);
+
+      $("leadModal").addEventListener("click", (e) => {
+        if (e.target === $("leadModal")) hideLeadModal();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && $("leadModal").classList.contains("show")) {
+          hideLeadModal();
+        }
+      });
+
+      $("leadForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const customer = getLeadData();
+        const err = validateLeadData(customer);
+
+        if (err) {
+          $("leadError").textContent = err;
+          $("leadError").style.display = "block";
+          return;
+        }
+
+        $("leadError").style.display = "none";
+        $("leadSubmitBtn").disabled = true;
+        $("leadSubmitBtn").textContent = "Đang gửi thông tin...";
+
+        try {
+          await sendLeadEmail(customer);
+          hideLeadModal();
+          exportPDF(customer);
+        } catch (error) {
+          console.error("EmailJS error:", error);
+          $("leadError").textContent =
+            "EmailJS lỗi: " +
+            (error?.status ? error.status + " - " : "") +
+            (error?.text || error?.message || JSON.stringify(error));
+          $("leadError").style.display = "block";
+        } finally {
+          $("leadSubmitBtn").disabled = false;
+          $("leadSubmitBtn").textContent = "Đăng ký";
+        }
+      });
+
+      ["productLine", "customerDisplayName", "staffDisplayName"].forEach(
+        (id) => {
+          $(id).addEventListener("input", updateUI);
+        },
+      );
+
+      ["areaInput"].forEach((id) => {
+        $(id).addEventListener("input", updateUI);
+      });
+
+      ["unitPriceInput"].forEach((id) => {
+        $(id).addEventListener("input", () => {
+          formatMoneyInput(id);
+          updateUI();
+        });
+      });
+
+      $("unitType").addEventListener("input", updateUI);
+
+      renderChecklists();
+      renderRisks();
+      updateUI();
+    </script>
+  </body>
+</html>
